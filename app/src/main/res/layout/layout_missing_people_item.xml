@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:background="@drawable/round"
+    android:elevation="3dp">
+
+    <ImageView
+        android:id="@+id/peopleImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/peopleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/peopleImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/peopleNowAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="현재나이 daum"
+        android:textColor="#000"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/peopleName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/peopleAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="당시나이 daum"
+        android:layout_marginLeft="20dp"
+        android:textColor="#000"
+        app:layout_constraintBottom_toTopOf="@+id/occurSpot"
+        app:layout_constraintStart_toEndOf="@+id/peopleName"
+        app:layout_constraintTop_toBottomOf="@+id/peopleNowAge" />
+
+    <TextView
+        android:id="@+id/occurSpot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="발생당시"
+        android:textColor="#000"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/peopleName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

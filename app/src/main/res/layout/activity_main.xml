@@ -44,17 +44,17 @@
                 app:menu="@menu/mainmenu" />
 
         </FrameLayout>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/faBtn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:elevation="4dp"
-            app:backgroundTint="#3F51B5"
-            app:layout_anchor="@id/bottombar_main"
-            app:rippleColor="@android:color/white"
-            android:src="@drawable/ic_baseline_call_24"
-            app:fabCustomSize="80dp"
-            app:maxImageSize="45dp"
-            app:tint="@android:color/white" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/faBtn"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:elevation="4dp"-->
+<!--            app:backgroundTint="#3F51B5"-->
+<!--            app:layout_anchor="@id/bottombar_main"-->
+<!--            app:rippleColor="@android:color/white"-->
+<!--            android:src="@drawable/ic_baseline_call_24"-->
+<!--            app:fabCustomSize="80dp"-->
+<!--            app:maxImageSize="45dp"-->
+<!--            app:tint="@android:color/white" />-->
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

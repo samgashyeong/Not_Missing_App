@@ -1,30 +1,39 @@
-package com.example.notmissing
+package com.example.notmissing.view
 
-import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import com.example.notmissing.R
+import com.example.notmissing.view.fragment.HowToReportLostPeopleFragment
+import com.example.notmissing.view.fragment.MapFragment
+import com.example.notmissing.view.fragment.PeopleFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
-    private val mainFragment2 by lazy { MapFragment() }
-    private val mainFragment3 by lazy { PeopleFragment() }
+    private val mainFragment1 by lazy { HowToReportLostPeopleFragment() }
+    private val mainFragment3 by lazy { MapFragment() }
+    private val mainFragment2 by lazy { PeopleFragment() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        changeFragment(mainFragment2)
+        changeFragment(mainFragment1)
 
 
         findViewById<BottomNavigationView>(R.id.bottomNavigation).setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.map -> {
-                    changeFragment(mainFragment2)
+                    changeFragment(mainFragment3)
                     true
                 }
                 R.id.lostPeople -> {
-                    changeFragment(mainFragment3)
+                    changeFragment(mainFragment2)
+                    true
+                }
+                R.id.reportLostPeople ->{
+                    changeFragment(mainFragment1)
                     true
                 }
                 else -> {
@@ -32,9 +41,6 @@ class MainActivity : AppCompatActivity() {
                     false
                 }
             }
-        }
-        findViewById<FloatingActionButton>(R.id.faBtn).setOnClickListener {
-//            startActivity(Intent(this, PickMoodActivity::class.java))
         }
     }
     fun changeFragment(fragment: Fragment) {

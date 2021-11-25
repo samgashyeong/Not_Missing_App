@@ -2,21 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/map"
-        android:icon="@drawable/ic_baseline_map_24"
-        android:title="map" />
-
-
-    <item
-        android:id="@+id/nullItem"
-        android:checked="false"
-        android:title=""
-        android:enabled="false"/>
+        android:id="@+id/reportLostPeople"
+        android:title="report"
+        android:icon="@drawable/ic_baseline_call_24"/>
 
     <item
         android:id="@+id/lostPeople"
         android:icon="@drawable/ic_baseline_people_alt_24"
         android:title="lostPeople" />
+
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/ic_baseline_map_24"
+        android:title="map" />
 
 
 </menu>

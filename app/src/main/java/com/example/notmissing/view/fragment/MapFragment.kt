@@ -1,12 +1,15 @@
-package com.example.notmissing
+package com.example.notmissing.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.notmissing.R
+import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView
 
-class PeopleFragment : Fragment() {
+class MapFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +20,6 @@ class PeopleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_people, container, false)
+        return inflater.inflate(R.layout.fragment_map, container, false)
     }
 }
