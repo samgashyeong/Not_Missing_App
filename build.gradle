@@ -4,6 +4,7 @@ buildscript {
         flatDir {
             dirs 'libs'
         }
+        jcenter({url('https://jitpack.io')})
         google()
         mavenCentral()
     }

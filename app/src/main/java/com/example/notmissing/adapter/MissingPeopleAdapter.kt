@@ -47,8 +47,8 @@ class MissingPeopleAdapter(val data : ArrayList<People>, val onClick : (position
         if(holder is ViewHolder){
             val result = data[position]
             holder.peopleImage.setImageBitmap(StringToBitMap(result.tknphotoFile))
-            holder.peopleAge.text = "당시 나이 : ${result.age}"
-            holder.peopleNowAge.text = "현재 나이 : ${result.ageNow}"
+            holder.peopleAge.text = "당시 나이 : ${result.age}세"
+            holder.peopleNowAge.text = "현재 나이 : ${result.ageNow}세"
             holder.occurSpot.text = "발생장소\n${result.occrAdres}"
             holder.peopleName.text = result.nm
         }
