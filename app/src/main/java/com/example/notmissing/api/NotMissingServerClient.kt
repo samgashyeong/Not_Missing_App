@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NotMissingServerClient {
-    private const val baseUrl = "https://not-missing.herokuapp.com/api/"
+    private const val baseUrl = "https://not-missing-api.herokuapp.com/api/"
 
     fun getInstance() : Retrofit {
 
