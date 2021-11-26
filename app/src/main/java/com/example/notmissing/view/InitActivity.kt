@@ -3,6 +3,7 @@ package com.example.notmissing.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.example.notmissing.R
 import com.example.notmissing.api.NotMissingServerClient
 import com.example.notmissing.model.missingpeople.MissingPeopleModel
@@ -37,6 +38,9 @@ class InitActivity : AppCompatActivity() {
                     if(response.code() == 200){
                         this@InitActivity.runOnUiThread {
                             peopleList = result!!.list as ArrayList<People>
+                            peopleList.add(People(1, " ", " ",1," "," "," "," ",1,1," "," "," "," ",1," "," ",1, " "
+                            ))
+                            findViewById<TextView>(R.id.loadingText).text = "앱 로딩 중...(1/2)"
                             getMapData()
                         }
                     }
@@ -45,7 +49,6 @@ class InitActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<MissingPeopleModel>, t: Throwable) {
                     t.printStackTrace()
                 }
-
             })
         }
     }
@@ -58,13 +61,16 @@ class InitActivity : AppCompatActivity() {
                     response: Response<SafeSpotModel>
                 ) {
                     if(response.isSuccessful){
+                        findViewById<TextView>(R.id.loadingText).text = "앱 로딩 중...(2/2) 성공!"
                         mapList = response.body()!!.list as ArrayList<Spot>
+                        mapList.add(Spot(" "," "," "," "," "," ",1,1.0,1.0,1," "," "," "," "))
                         startActivity(Intent(
                             this@InitActivity, MainActivity::class.java
                         )
                             .putExtra("peopleList", peopleList)
                             .putExtra("mapList", mapList)
                         )
+                        finish()
                     }
                 }
 

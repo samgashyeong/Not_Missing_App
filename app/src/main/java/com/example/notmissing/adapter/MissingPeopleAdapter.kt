@@ -15,7 +15,11 @@ import android.util.Base64
 import java.lang.Exception
 
 
-class MissingPeopleAdapter(val data : ArrayList<People>) : RecyclerView.Adapter<MissingPeopleAdapter.ViewHolder>() {
+class MissingPeopleAdapter(val data : ArrayList<People>, val onClick : (position : Int, data : People) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val VIEW_TYPE_ITEM = 0
+    private val VIEW_TYPE_LOADING = 1
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val peopleImage : ImageView = itemView.findViewById(R.id.peopleImage)
         val peopleAge : TextView = itemView.findViewById(R.id.peopleAge)
@@ -24,23 +28,8 @@ class MissingPeopleAdapter(val data : ArrayList<People>) : RecyclerView.Adapter<
         val peopleName : TextView = itemView.findViewById(R.id.peopleName)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_missing_people_item, parent, false)
+    inner class LodingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        return ViewHolder(v)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val result = data[position]
-        holder.peopleImage.setImageBitmap(StringToBitMap(result.tknphotoFile))
-        holder.peopleAge.text = result.age.toString()
-        holder.peopleNowAge.text = result.ageNow
-        holder.occurSpot.text = result.occrAdres
-        holder.peopleName.text = result.nm
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
     }
 
 
@@ -52,5 +41,51 @@ class MissingPeopleAdapter(val data : ArrayList<People>) : RecyclerView.Adapter<
             e.message
             null
         }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if(holder is ViewHolder){
+            val result = data[position]
+            holder.peopleImage.setImageBitmap(StringToBitMap(result.tknphotoFile))
+            holder.peopleAge.text = "당시 나이 : ${result.age}"
+            holder.peopleNowAge.text = "현재 나이 : ${result.ageNow}"
+            holder.occurSpot.text = "발생장소\n${result.occrAdres}"
+            holder.peopleName.text = result.nm
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType) {
+            VIEW_TYPE_ITEM -> {
+                val v = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.layout_missing_people_item, parent, false)
+                val holder = ViewHolder(v)
+                v.setOnClickListener {
+                    onClick(holder.adapterPosition, data[holder.adapterPosition])
+                }
+                holder
+            }
+            else -> {
+                val v = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.layout_loding_item, parent, false)
+                LodingViewHolder(v)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return data.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when(data[position]!!.ageNow){
+            " "->{
+                VIEW_TYPE_LOADING
+            }
+            else->{
+                VIEW_TYPE_ITEM
+            }
+        }
+
     }
 }
