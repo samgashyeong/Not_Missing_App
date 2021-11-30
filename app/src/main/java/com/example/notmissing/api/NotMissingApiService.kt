@@ -8,6 +8,7 @@ import com.example.notmissing.model.safespot.SafeSpotModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface NotMissingApiService {
@@ -20,6 +21,6 @@ interface NotMissingApiService {
     @GET("ReportPostData/reportpost/")
     fun getReportPostData(): Call<ReportPostDataModel>
 
-    @GET("ReportPostData/reportpost/")
+    @POST("ReportPostData/reportpost/")
     fun PostReportPostData(@Body post:PostModel): Call<ReportPostDataModelItem>
 }

@@ -65,6 +65,7 @@ class InitActivity : AppCompatActivity() {
                     if(response.isSuccessful){
                         findViewById<TextView>(R.id.loadingText).text = "앱 로딩 중...(2/3)"
                         postList = response.body()!!
+                        postList.reverse()
                         getMapData()
                     }
                 }
