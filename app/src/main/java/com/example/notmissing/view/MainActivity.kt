@@ -8,6 +8,8 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.notmissing.R
 import com.example.notmissing.model.missingpeople.People
+import com.example.notmissing.model.reportpostdata.ReportPostDataModel
+import com.example.notmissing.model.reportpostdata.ReportPostDataModelItem
 import com.example.notmissing.model.safespot.Spot
 import com.example.notmissing.view.fragment.HowToReportLostPeopleFragment
 import com.example.notmissing.view.fragment.MapFragment
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         vm.missingPeopleList.value = intent.getSerializableExtra("peopleList") as ArrayList<People>
         vm.mapList.value = intent.getSerializableExtra("mapList") as ArrayList<Spot>
+        vm.postList.value = intent.getSerializableExtra("postList") as ReportPostDataModel
 
 
         findViewById<BottomNavigationView>(R.id.bottomNavigation).setOnNavigationItemSelectedListener { item ->
